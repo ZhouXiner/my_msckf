@@ -1,0 +1,8 @@
+prefix=/home/zhouxin/Documents/my_msckf/devel
+
+Name: msckf
+Description: Description of msckf
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/zhouxin/Documents/my_msckf/devel/lib 
+Requires: 

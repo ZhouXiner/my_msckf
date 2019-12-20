@@ -1,0 +1,2 @@
+msckf
+-DCATKIN_DEVEL_PREFIX=/home/zhouxin/Documents/my_msckf/devel -DCMAKE_INSTALL_PREFIX=/home/zhouxin/Documents/my_msckf/install -G Unix Makefiles
