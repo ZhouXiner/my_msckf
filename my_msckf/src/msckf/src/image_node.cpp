@@ -3,10 +3,11 @@
 bool initialize(ros::NodeHandle &nh){
 
     if(!load_parameter(nh)){
+        cout << "bad parameter load " << endl;
         return false;
     }
+    detector_ptr = cv::FastFeatureDetector::create(fast_threshold);
     return true;
-
 }
 
 bool load_parameter(ros::NodeHandle &nh){
@@ -137,47 +138,73 @@ void stereo_callback(const sensor_msgs::ImageConstPtr& cam0_msg,
         add_new_feature();
     }
     status_change();
+    publish();
 }
 
 void initialize_feature_track(){
-    const cv::Mat current_img0 = cam0_curr_img_ptr->image;
-    const cv::Mat current_img1 = cam1_curr_img_ptr->image;
+    const cv::Mat& current_img0 = cam0_curr_img_ptr->image;
+    const cv::Mat& current_img1 = cam1_curr_img_ptr->image;
 
+    image_rows = current_img0.rows;
+    image_cols = current_img0.cols;
+
+    static int grid_height = current_img0.rows / grid_row;
+    static int grid_width = current_img0.cols / grid_col;
+    //grid_points_size = int(fast_threshold / (grid_col * grid_row));
+
+    vector<cv::KeyPoint> cam0_KeyPoint(0);
     vector<cv::Point2f> cam0_points_undistorted;
     vector<cv::Point2f> cam1_points_undistorted;
-    vector<cv::Point2f> cam0_points_tmp;
-    vector<cv::Point2f> cam1_points_tmp;
-    cv::goodFeaturesToTrack(current_img0, cam0_points_tmp,fast_threshold, 0.01,30);
+    vector<cv::Point2f> cam0_inliers;
+    vector<cv::Point2f> cam1_inliers;
+    vector<cv::Point2f> cam0_points_before_track;
+    vector<cv::Point2f> cam1_points_before_track;
+    vector<vector<Feature_Grid>> Curr_Feature_Grid(grid_col * grid_row);
+    Curr_Feature_Buffer.resize(grid_col * grid_row);
+
+    detector_ptr->detect(current_img0,cam0_KeyPoint);
+
+
+    cam0_points_before_track.resize(cam0_KeyPoint.size());
+    for(size_t i=0;i<cam0_KeyPoint.size();i++){
+        cam0_points_before_track[i] = cam0_KeyPoint[i].pt;
+    }
 
     //得到了光流法左右追踪的结果，并且清除了效果不好的点
+    //这里可以添加:先将cam0的点进行去畸变，得到归一化平面坐标，再利用两个平面间的R，t得到cam1预估值
     vector<uchar> status;
     vector<float> err;
-    cv::calcOpticalFlowPyrLK(current_img0,current_img1,cam0_points_tmp,cam1_points_tmp,status,err,cv::Size(21, 21), 3);
+    cv::calcOpticalFlowPyrLK(current_img0,current_img1,cam0_points_before_track,cam1_points_before_track,status,err,cv::Size(21, 21), 3);
 
     for(size_t i=0;i<status.size();i++){
-        if(status[i]){
-            curr_cam0_points.push_back(cam0_points_tmp[i]);
-            curr_cam1_points.push_back(cam1_points_tmp[i]);
+        if(status[i] && inborder(cam1_points_before_track[i]) && inborder(cam0_points_before_track[i])){
+            Feature_Grid feature_add;
+            feature_add.p0 = cam0_points_before_track[i];
+            feature_add.p1 = cam1_points_before_track[i];
+            feature_add.response = cam0_KeyPoint[i].response;
+            int row = int(cam0_points_before_track[i].x / grid_width);
+            int col = int(cam0_points_before_track[i].y / grid_height);
+            int id = row * grid_col + col;
+            Curr_Feature_Grid[id].push_back(feature_add);
+
         }
     }
 
 
+    for(auto &grid_feature:Curr_Feature_Grid){
+        std::sort(grid_feature.begin(),grid_feature.end(),compare_by_response);
+    }
 
-    //应该对点进行undistort了，首先我们需要初始化内参、畸变信息等等
-    undistort_points(curr_cam0_points,cam0_points_undistorted,cam0_intrinsics,cam0_distortion_coeffs);
-    undistort_points(curr_cam1_points,cam1_points_undistorted,cam1_intrinsics,cam1_distortion_coeffs);
-
-    //这里我们有很多可以增加的优化
-    //1.利用本质矩阵，采用ransac筛选  2.对于点不够的情况，重新detect再进行匹配和去畸变  3.two_ransac等ransac的加强版
-    for(size_t i=0;i<cam0_points_undistorted.size();i++){
-        Feature_Status feat;
-        feat.feat_id = feature_id++;
-        feat.life_time = 1;
-        feat.u0 = double(cam0_points_undistorted[i].x);
-        feat.v0 = double(cam0_points_undistorted[i].y);
-        feat.u1 = double(cam1_points_undistorted[i].x);
-        feat.v1 = double(cam1_points_undistorted[i].y);
-        Curr_Feature_Buffer.push_back(feat);
+    for(int id=0;id<Curr_Feature_Grid.size();id++){
+        vector<Feature_Grid> grid_features = Curr_Feature_Grid[id];
+        for(int size = 0;size < grid_points_min_size && size < grid_features.size();size++){
+            Feature_Status feat;
+            feat.feat_id = feature_id++;
+            feat.life_time = 1;
+            feat.p0 = grid_features[size].p0;
+            feat.p1 = grid_features[size].p1;
+            Curr_Feature_Buffer[id].push_back(feat);
+        }
     }
 }
 
@@ -195,153 +222,193 @@ void undistort_points(const vector<cv::Point2f>& pts_in,vector<cv::Point2f>& pts
 
 }
 
-
 void feature_track(){
     const cv::Mat prev_img = cam0_prev_img_ptr->image;
     const cv::Mat current_img0 = cam0_curr_img_ptr->image;
     const cv::Mat current_img1 = cam1_curr_img_ptr->image;
-    vector<uchar> track_status;
-    vector<float> track_error;
-    vector<uchar> stereo_status;
-    vector<float> stereo_error;
-    vector<cv::Point2f> current_points_tmp0;
-    vector<cv::Point2f> current_points_tmp00;
-    vector<cv::Point2f> current_points_undistorted0;
-    vector<cv::Point2f> current_points_tmp1;
-    vector<cv::Point2f> current_points_undistorted1;
+
+    static int grid_height = current_img0.rows / grid_row;
+    static int grid_width = current_img0.cols / grid_col;
+    Curr_Feature_Buffer.resize(grid_col * grid_row);
+
+    vector<cv::Point2f> prev_cam0_points;
+    vector<int> prev_cam0_lifetime;
+    vector<long long int> prev_cam0_ids;
 
 
-    const int cols = current_img0.cols;
-    const int rows = current_img0.rows;
-    int track_cnt = 0;
-    int stereo_cnt = 0;
+    for(auto prev_grid_features:Pre_Feature_Buffer){
+        for(auto feat_info:prev_grid_features){
+            prev_cam0_points.push_back(feat_info.p0);
+            prev_cam0_ids.push_back(feat_info.feat_id);
+            prev_cam0_lifetime.push_back(feat_info.life_time);
+        }
+    }
+
+    int before_tracking = prev_cam0_points.size();
 
     //首先，利用Imu估计一个当前的点的分布
-    predict_track_points(current_points_tmp0);
 
-    cout << "Prev: " << prev_cam0_points.size() << " before track： " << current_points_tmp0.size();
+    vector<cv::Point2f> curr_cam0_track_points;
+    vector<uchar> track_status;
+    predict_track_points(curr_cam0_track_points,prev_cam0_points);
 
-    //再进行光流追踪
-    cv::calcOpticalFlowPyrLK(prev_img,current_img0,prev_cam0_points,current_points_tmp0,track_status,track_error);
+    cv::calcOpticalFlowPyrLK(prev_img,current_img0,prev_cam0_points,curr_cam0_track_points,track_status,cv::noArray());
 
-    for(size_t i=0;i<track_status.size();i++){
-        if(track_status[i] && (current_points_tmp0[i].x > 0 && current_points_tmp0[i].x < rows)
-                  && (current_points_tmp0[i].y > 0 && current_points_tmp0[i].y < cols)){
-            current_points_tmp00.push_back(current_points_tmp0[i]);
-            track_id.push_back(i);
-            track_cnt++;
+    vector<cv::Point2f> prev_cam0_tracked_points;
+    vector<int> prev_cam0_tracked_lifetime;
+    vector<long long int> prev_cam0_tracked_ids;
+    vector<cv::Point2f> curr_cam0_tracked_points;
+
+    for(size_t i = 0;i<track_status.size();i++){
+        if(!inborder(curr_cam0_track_points[i])){
+            track_status[i] = 0;
         }
     }
 
-    cv::calcOpticalFlowPyrLK(current_img0,current_img1,current_points_tmp00,current_points_tmp1,stereo_status,stereo_error);
+    removeUnmarkedElements(prev_cam0_points,track_status,prev_cam0_tracked_points);
+    removeUnmarkedElements(prev_cam0_ids,track_status,prev_cam0_tracked_ids);
+    removeUnmarkedElements(prev_cam0_lifetime,track_status,prev_cam0_tracked_lifetime);
+    removeUnmarkedElements(curr_cam0_track_points,track_status,curr_cam0_tracked_points);
 
-    for(size_t i=0;i<stereo_status.size();i++){
-        if(stereo_status[i] && track_status[track_id[i]] && (current_points_tmp1[i].x > 0 && current_points_tmp1[i].x < rows)
-                                && (current_points_tmp1[i].y > 0 && current_points_tmp1[i].y < cols)){
-            curr_cam0_points.push_back(current_points_tmp00[i]);
-            curr_cam1_points.push_back(current_points_tmp1[i]);
-        }
-        else{
-            track_id[i] = -1;
-        }
-    }
+    int after_tracking = curr_cam0_tracked_points.size();
 
-    //这里去畸变的点没有进行筛选，而是将所有点都放进去了，利用track_id进行判断
-    undistort_points(current_points_tmp00,current_points_undistorted0,cam0_intrinsics,cam0_distortion_coeffs);
-    undistort_points(current_points_tmp1,current_points_undistorted1,cam1_intrinsics,cam1_distortion_coeffs);
+   //光线追踪，确定左右相机的点
+    vector<cv::Point2f> curr_cam1_match_points;
+    vector<uchar> match_status;
+    cv::calcOpticalFlowPyrLK(current_img0,current_img1,curr_cam0_tracked_points,curr_cam1_match_points,match_status,cv::noArray());
+
+    vector<cv::Point2f> prev_cam0_matched_points;
+    vector<int> prev_cam0_matched_lifetime;
+    vector<long long int> prev_cam0_matched_ids;
+    vector<cv::Point2f> curr_cam0_matched_points;
+    vector<cv::Point2f> curr_cam1_matched_points;
 
 
-    for(size_t i=0;i<stereo_status.size();i++){
-        if(stereo_status[i] && track_id[i] != -1 && track_status[track_id[i]] && (current_points_tmp1[i].x > 0 && current_points_tmp1[i].x < rows)
-           && (current_points_tmp1[i].y > 0 && current_points_tmp1[i].y < cols)){
-            int pre_index = track_id[i];
-            Feature_Status feat;
-            feat.feat_id = Pre_Feature_Buffer[pre_index].feat_id;
-            feat.life_time = Pre_Feature_Buffer[pre_index].life_time + 1;
-            feat.u0 = double(current_points_undistorted0[i].x);
-            feat.v0 = double(current_points_undistorted0[i].y);
-            feat.u1 = double(current_points_undistorted1[i].x);
-            feat.v1 = double(current_points_undistorted1[i].y);
-            Curr_Feature_Buffer.push_back(feat);
-            stereo_cnt++;
+    for(size_t i = 0;i<match_status.size();i++){
+        if(!inborder(curr_cam1_match_points[i])){
+            match_status[i] = 0;
         }
     }
-    cout << " after track: " << curr_cam0_points.size() << ". Stereo size: " << stereo_cnt;
 
+    removeUnmarkedElements(prev_cam0_tracked_points,match_status,prev_cam0_matched_points);
+    removeUnmarkedElements(prev_cam0_tracked_ids,match_status,prev_cam0_matched_ids);
+    removeUnmarkedElements(prev_cam0_tracked_lifetime,match_status,prev_cam0_matched_lifetime);
+    removeUnmarkedElements(curr_cam0_tracked_points,match_status,curr_cam0_matched_points);
+    removeUnmarkedElements(curr_cam1_match_points,match_status,curr_cam1_matched_points);
+
+    int after_matching = curr_cam1_matched_points.size();
+
+    for(int i=0;i<curr_cam0_matched_points.size();i++){
+        int row = int(curr_cam0_matched_points[i].y / grid_height);
+        int col = int(curr_cam0_matched_points[i].x / grid_width);
+        int code = row*grid_col + col;
+        if(Curr_Feature_Buffer[code].size() > grid_points_min_size){
+            continue;
+        }
+        Feature_Status feat;
+        feat.feat_id = prev_cam0_matched_ids[i];
+        feat.life_time = prev_cam0_matched_lifetime[i] + 1;
+        feat.p0 = curr_cam0_matched_points[i];
+        feat.p1 = curr_cam1_matched_points[i];
+        Curr_Feature_Buffer[code].push_back(feat);
+    }
+    cout << "before tracking : " << before_tracking << " tracking: " << after_tracking << " matching: " << after_matching << endl;
+    return;
 }
 
 void add_new_feature(){
 
-    if(curr_cam0_points.size() == fast_threshold) return;
     //生成mask
     const cv::Mat current_img0 = cam0_curr_img_ptr->image;
     const cv::Mat current_img1 = cam1_curr_img_ptr->image;
-    const int cols = current_img0.cols;
-    const int rows = current_img0.rows;
 
-    cv::Mat mask(rows, cols, CV_8U, cv::Scalar(1));
-    for(auto &feat:curr_cam0_points){
-        const int y = feat.x;
-        const int x = feat.y;
+    static int grid_height = current_img0.rows / grid_row;
+    static int grid_width = current_img0.cols / grid_col;
 
-        int up_lim = y-2, bottom_lim = y+3,
-                left_lim = x-2, right_lim = x+3;
-        if (up_lim < 0) up_lim = 0;
-        if (bottom_lim > rows) bottom_lim = rows;
-        if (left_lim < 0) left_lim = 0;
-        if (right_lim > cols) right_lim = cols;
 
-        cv::Range row_range(up_lim, bottom_lim);
-        cv::Range col_range(left_lim, right_lim);
-        mask(row_range, col_range) = 0;
-    }
+    cv::Mat mask(image_rows, image_cols, CV_8U, cv::Scalar(1));
 
-    vector<cv::KeyPoint> add_keypoints;
-    vector<cv::Point2f> add_cam0_points_tmp;
-    vector<cv::Point2f> add_cam0_points_tmp0;
-    vector<cv::Point2f> add_cam0_points_undistorted;
-    vector<cv::Point2f> add_cam1_points_tmp;
-    vector<cv::Point2f> add_cam1_points_tmp1;
-    vector<cv::Point2f> add_cam1_points_undistorted;
-    cv::goodFeaturesToTrack(current_img0, add_cam0_points_tmp,fast_threshold - curr_cam0_points.size(), 0.01,30,mask);
-    for(auto feat:add_keypoints){
-        add_cam0_points_tmp.push_back(feat.pt);
-    }
+    for(auto grid_features:Curr_Feature_Buffer){
+        for(auto feat:grid_features) {
+            const int y = feat.p0.x;
+            const int x = feat.p0.y;
 
-    vector<unsigned char> add_status;
-    cv::calcOpticalFlowPyrLK(current_img0,current_img1,add_cam0_points_tmp,add_cam1_points_tmp,add_status,cv::noArray());
+            int up_lim = y - 2, bottom_lim = y + 3,
+                    left_lim = x - 2, right_lim = x + 3;
+            if (up_lim < 0) up_lim = 0;
+            if (bottom_lim > image_rows) bottom_lim = image_rows;
+            if (left_lim < 0) left_lim = 0;
+            if (right_lim > image_cols) right_lim = image_cols;
 
-    for(size_t i=0;i<add_status.size();i++){
-        if(add_status[i] && (add_cam1_points_tmp[i].x > 0 && add_cam1_points_tmp[i].x < rows)
-                            && (add_cam1_points_tmp[i].y > 0 && add_cam1_points_tmp[i].y < cols)){
-            add_cam0_points_tmp0.push_back(add_cam0_points_tmp[i]);
-            add_cam1_points_tmp1.push_back(add_cam1_points_tmp[i]);
+            cv::Range row_range(up_lim, bottom_lim);
+            cv::Range col_range(left_lim, right_lim);
+            mask(row_range, col_range) = 0;
         }
     }
 
+    vector<cv::KeyPoint> cam0_KeyPoint;
+    vector<cv::Point2f> cam0_points_undistorted;
+    vector<cv::Point2f> cam1_points_undistorted;
+    vector<cv::Point2f> cam0_inliers;
+    vector<cv::Point2f> cam1_inliers;
+    vector<cv::Point2f> cam0_points_before_track;
+    vector<cv::Point2f> cam1_points_before_track;
+    vector<vector<Feature_Grid>> Curr_Feature_Grid(grid_col * grid_row);
 
-    undistort_points(add_cam0_points_tmp0,add_cam0_points_undistorted,cam0_intrinsics,cam0_distortion_coeffs);
-    undistort_points(add_cam1_points_tmp1,add_cam1_points_undistorted,cam1_intrinsics,cam1_distortion_coeffs);
+    detector_ptr->detect(current_img0,cam0_KeyPoint,mask);
 
-    for(size_t i=0;i<add_cam0_points_undistorted.size();i++){
-        Feature_Status feat;
-        feat.feat_id = feature_id++;
-        feat.life_time = 1;
-        feat.u0 = double(add_cam0_points_undistorted[i].x);
-        feat.v0 = double(add_cam0_points_undistorted[i].y);
-        feat.u1 = double(add_cam1_points_undistorted[i].x);
-        feat.v1 = double(add_cam1_points_undistorted[i].y);
-        Curr_Feature_Buffer.push_back(feat);
+    for(auto keypoint:cam0_KeyPoint){
+        cam0_points_before_track.push_back(keypoint.pt);
     }
-    curr_cam0_points.insert(curr_cam0_points.end(),add_cam0_points_tmp0.begin(),add_cam0_points_tmp0.end());
 
-    cout << ". Add size: " << add_cam0_points_tmp0.size()  << endl;
+    //得到了光流法左右追踪的结果，并且清除了效果不好的点
+    //这里可以添加:先将cam0的点进行去畸变，得到归一化平面坐标，再利用两个平面间的R，t得到cam1预估值
+    vector<uchar> status;
+    vector<float> err;
+    cv::calcOpticalFlowPyrLK(current_img0,current_img1,cam0_points_before_track,cam1_points_before_track,status,err,cv::Size(21, 21), 3);
+
+    for(size_t i=0;i<status.size();i++){
+        if(status[i] && inborder(cam0_points_before_track[i]) && inborder(cam1_points_before_track[i])){
+            Feature_Grid feature_add;
+            feature_add.p0 = cam0_points_before_track[i];
+            feature_add.p1 = cam1_points_before_track[i];
+            feature_add.response = cam0_KeyPoint[i].response;
+            int row = int(cam0_points_before_track[i].x / grid_width);
+            int col = int(cam0_points_before_track[i].y / grid_height);
+            int id = row * grid_col + col;
+            Curr_Feature_Grid[id].push_back(feature_add);
+        }
+    }
+
+    for(auto &grid_feature:Curr_Feature_Grid){
+        std::sort(grid_feature.begin(),grid_feature.end(),compare_by_response);
+    }
+
+    cout << "grid finished !" << endl;
+    int new_add = 0;
+    for(int id=0;id<Curr_Feature_Grid.size();id++){
+        vector<Feature_Grid> grid_features = Curr_Feature_Grid[id];
+        for(int size = 0;size < grid_points_max_size && size < grid_features.size();size++){
+            if(Curr_Feature_Buffer[id].size() >= grid_points_max_size){
+                break;
+            }
+
+            Feature_Status feat;
+            feat.feat_id = feature_id++;
+            feat.life_time = 1;
+            feat.p0 = grid_features[size].p0;
+            feat.p1 = grid_features[size].p1;
+            Curr_Feature_Buffer[id].push_back(feat);
+            new_add++;
+        }
+    }
+    cout << " new add: " << new_add << endl;
 }
 
-void predict_track_points(vector<cv::Point2f> &pt_predict){
-    if(prev_cam0_points.size() == 0) return;
+void predict_track_points(vector<cv::Point2f> &pt_predict,vector<cv::Point2f> pt_prev){
+    if(pt_prev.size() == 0) return;
 
-    pt_predict.resize(prev_cam0_points.size());
+    pt_predict.resize(pt_prev.size());
     Matrix3d R_theta_c;
     predict_theta_R(R_theta_c);
 
@@ -352,8 +419,8 @@ void predict_track_points(vector<cv::Point2f> &pt_predict){
     Matrix3d H = K * R_theta_c * K.inverse();
 
 
-    for(size_t i=0;i<prev_cam0_points.size();i++){
-        Vector3d p1(prev_cam0_points[i].x,prev_cam0_points[i].y,1.0);
+    for(size_t i=0;i<pt_prev.size();i++){
+        Vector3d p1(pt_prev[i].x,pt_prev[i].y,1.0);
         Vector3d p2 = H * p1;
         pt_predict[i].x = p2[0] / p2[2];
         pt_predict[i].y = p2[1] / p2[2];
@@ -407,16 +474,19 @@ void predict_theta_R(Matrix3d &R_theta_c){
     return;
 }
 void status_change(){
+    Pre_Feature_Buffer.clear();
     Pre_Feature_Buffer = Curr_Feature_Buffer;
     Curr_Feature_Buffer.clear();
-    prev_cam0_points.clear();
     cam0_prev_img_ptr = cam0_curr_img_ptr;
-    prev_cam0_points = curr_cam0_points;
-    prev_cam1_points = curr_cam1_points;
-    curr_cam0_points.clear();
-    curr_cam1_points.clear();
+
 }
 
+bool inborder(cv::Point2f p){
+    if(p.x < 0 || p.x > image_rows || p.y < 0 || p.y > image_cols){
+        return false;
+    }
+    return true;
+}
 
 int main(int argc, char **argv){
     ros::init(argc, argv, "image_node");

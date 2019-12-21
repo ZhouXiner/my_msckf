@@ -25,6 +25,7 @@ namespace utils {
         T.translation()(2) = c.at<double>(2, 3);
         return T;
     }
+
     Eigen::Matrix4d getT(const vector<double> t_vec){
         Eigen::Matrix4d T;
         T << t_vec[0],t_vec[1],t_vec[2],t_vec[3],

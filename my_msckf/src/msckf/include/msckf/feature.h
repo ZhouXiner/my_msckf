@@ -15,7 +15,14 @@ using namespace Eigen;
 struct Feature_Status{
     long long int feat_id;
     int life_time;
-    double u0,u1,v0,v1;
+    cv::Point2f p0;
+    cv::Point2f p1;
+};
+
+struct Feature_Grid{
+    cv::Point2f p0;
+    cv::Point2f p1;
+    float response;
 };
 
 #endif //SRC_FEATURE_H
