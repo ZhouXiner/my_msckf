@@ -1,4 +1,6 @@
 #include <msckf/image_node.h>
+#include <msckf/CameraMeasurement.h>
+
 
 bool initialize(ros::NodeHandle &nh){
 
@@ -137,8 +139,8 @@ void stereo_callback(const sensor_msgs::ImageConstPtr& cam0_msg,
         feature_track();
         add_new_feature();
     }
-    status_change();
     publish();
+    status_change();
 }
 
 void initialize_feature_track(){
@@ -150,7 +152,6 @@ void initialize_feature_track(){
 
     static int grid_height = current_img0.rows / grid_row;
     static int grid_width = current_img0.cols / grid_col;
-    //grid_points_size = int(fast_threshold / (grid_col * grid_row));
 
     vector<cv::KeyPoint> cam0_KeyPoint(0);
     vector<cv::Point2f> cam0_points_undistorted;
@@ -163,7 +164,6 @@ void initialize_feature_track(){
     Curr_Feature_Buffer.resize(grid_col * grid_row);
 
     detector_ptr->detect(current_img0,cam0_KeyPoint);
-
 
     cam0_points_before_track.resize(cam0_KeyPoint.size());
     for(size_t i=0;i<cam0_KeyPoint.size();i++){
@@ -195,6 +195,7 @@ void initialize_feature_track(){
         std::sort(grid_feature.begin(),grid_feature.end(),compare_by_response);
     }
 
+    int initialize_cnt = 0;
     for(int id=0;id<Curr_Feature_Grid.size();id++){
         vector<Feature_Grid> grid_features = Curr_Feature_Grid[id];
         for(int size = 0;size < grid_points_min_size && size < grid_features.size();size++){
@@ -204,8 +205,10 @@ void initialize_feature_track(){
             feat.p0 = grid_features[size].p0;
             feat.p1 = grid_features[size].p1;
             Curr_Feature_Buffer[id].push_back(feat);
+            initialize_cnt++;
         }
     }
+    cout << "initialization finished with "  << initialize_cnt << endl;
 }
 
 void undistort_points(const vector<cv::Point2f>& pts_in,vector<cv::Point2f>& pts_out,
@@ -272,7 +275,7 @@ void feature_track(){
 
     int after_tracking = curr_cam0_tracked_points.size();
 
-   //光线追踪，确定左右相机的点
+    //光线追踪，确定左右相机的点
     vector<cv::Point2f> curr_cam1_match_points;
     vector<uchar> match_status;
     cv::calcOpticalFlowPyrLK(current_img0,current_img1,curr_cam0_tracked_points,curr_cam1_match_points,match_status,cv::noArray());
@@ -312,7 +315,7 @@ void feature_track(){
         feat.p1 = curr_cam1_matched_points[i];
         Curr_Feature_Buffer[code].push_back(feat);
     }
-    cout << "before tracking : " << before_tracking << " tracking: " << after_tracking << " matching: " << after_matching << endl;
+    cout << "before tracking : " << before_tracking << " tracking: " << after_tracking << " matching: " << after_matching;
     return;
 }
 
@@ -384,7 +387,6 @@ void add_new_feature(){
         std::sort(grid_feature.begin(),grid_feature.end(),compare_by_response);
     }
 
-    cout << "grid finished !" << endl;
     int new_add = 0;
     for(int id=0;id<Curr_Feature_Grid.size();id++){
         vector<Feature_Grid> grid_features = Curr_Feature_Grid[id];
@@ -488,6 +490,44 @@ bool inborder(cv::Point2f p){
     return true;
 }
 
+void publish(){
+    msckf::CameraMeasurementPtr feature_msg_ptr(new msckf::CameraMeasurement);
+    feature_msg_ptr->header.stamp = cam0_curr_img_ptr->header.stamp;
+
+    vector<long long int> curr_ids;
+    vector<cv::Point2f> curr_cam0_points;
+    vector<cv::Point2f> curr_cam1_points;
+    vector<int> curr_lifetime;
+
+    for(auto &grid_features:Curr_Feature_Buffer){
+        for(auto &feature_info:grid_features){
+            curr_ids.push_back(feature_info.feat_id);
+            curr_lifetime.push_back(feature_info.life_time);
+            curr_cam0_points.push_back(feature_info.p0);
+            curr_cam1_points.push_back(feature_info.p1);
+
+        }
+    }
+    vector<cv::Point2f> curr_cam0_points_undistorted;
+    vector<cv::Point2f> curr_cam1_points_undistorted;
+
+    undistort_points(curr_cam0_points,curr_cam0_points_undistorted,cam0_intrinsics,cam0_distortion_coeffs);
+    undistort_points(curr_cam1_points,curr_cam1_points_undistorted,cam1_intrinsics,cam1_distortion_coeffs);
+
+    for (int i = 0; i < curr_ids.size(); ++i) {
+        feature_msg_ptr->features.push_back(msckf::FeatureMeasurement());
+        feature_msg_ptr->features[i].id = curr_ids[i];
+        feature_msg_ptr->features[i].lifetime = curr_lifetime[i];
+        feature_msg_ptr->features[i].u0 = curr_cam0_points_undistorted[i].x;
+        feature_msg_ptr->features[i].v0 = curr_cam0_points_undistorted[i].y;
+        feature_msg_ptr->features[i].u1 = curr_cam1_points_undistorted[i].x;
+        feature_msg_ptr->features[i].v1 = curr_cam1_points_undistorted[i].y;
+    }
+
+    feature_pub.publish(feature_msg_ptr);
+    return;
+}
+
 int main(int argc, char **argv){
     ros::init(argc, argv, "image_node");
     ros::NodeHandle n("~");
@@ -500,7 +540,10 @@ int main(int argc, char **argv){
     message_filters::TimeSynchronizer<sensor_msgs::Image, sensor_msgs::Image> stereo_sub(cam0_img_sub, cam1_img_sub,100);
     stereo_sub.registerCallback(boost::bind(stereo_callback,_1,_2));
 
-    ros::Subscriber imu_sub = n.subscribe("/imu0",100,imu_callback);
+    imu_sub = n.subscribe("/imu0",100,imu_callback);
+
+    feature_pub = n.advertise<msckf::CameraMeasurement>(
+            "features", 3);
 
     ros::spin();
     return 0;

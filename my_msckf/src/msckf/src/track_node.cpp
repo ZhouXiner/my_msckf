@@ -1,8 +1,19 @@
 //
 // Created by zhouxin on 2019/12/20.
 //
+#include <msckf/track_node.h>
 
+void track_imu_callback(const sensor_msgs::ImuConstPtr& msg){
+    Track_Imu_Msg_Buffer.push_back(*msg);
+    return;
+}
 
+void track_feature_callback(const msckf::CameraMeasurementConstPtr& msg){
+    cout << "get one" << endl;
+    cout << msg->features[0] << endl;
+}
+
+/*
 void initializeGravityAndBias(){
     Vector3d sum_angular_vel = Vector3d::Zero();
     Vector3d sum_linear_acc = Vector3d::Zero();
@@ -35,4 +46,19 @@ void initializeGravityAndBias(){
     Imu_State.orientation = rotationToQuaternion(q0_i_w.toRotationMatrix().transpose());
 
     return;
+}
+*/
+int main(int argc, char **argv){
+
+    ros::init(argc, argv, "track_node");
+    ros::NodeHandle n("~");
+    ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Info);
+
+    track_imu_sub = n.subscribe("/imu0",40,track_imu_callback);
+
+    feature_sub = n.subscribe("/image_node/features",40,track_feature_callback);
+
+    ros::spin();
+    return 0;
+
 }

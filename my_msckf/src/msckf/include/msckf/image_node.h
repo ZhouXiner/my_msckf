@@ -37,7 +37,6 @@
 using namespace std;
 using namespace Eigen;
 
-
 vector<sensor_msgs::Imu> Imu_Msg_Buffer;
 vector<vector<Feature_Status>> Curr_Feature_Buffer;
 vector<vector<Feature_Status>> Pre_Feature_Buffer;
@@ -80,6 +79,9 @@ int grid_col = 5;
 int image_rows,image_cols;
 int grid_points_min_size = 3;
 int grid_points_max_size = 4;
+
+ros::Subscriber imu_sub;
+ros::Publisher feature_pub;
 
 void imu_callback(const sensor_msgs::ImuConstPtr& msg);
 

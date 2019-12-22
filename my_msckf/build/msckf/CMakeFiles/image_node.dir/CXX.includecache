@@ -6,6 +6,42 @@
 
 #IncludeRegexTransform: 
 
+/home/zhouxin/Documents/my_msckf/devel/include/msckf/CameraMeasurement.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+msckf/FeatureMeasurement.h
+-
+
+/home/zhouxin/Documents/my_msckf/devel/include/msckf/FeatureMeasurement.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/zhouxin/Documents/my_msckf/src/msckf/include/msckf/camera.h
 Eigen/Dense
 -
@@ -92,6 +128,8 @@ Eigen/Dense
 
 /home/zhouxin/Documents/my_msckf/src/msckf/src/image_node.cpp
 msckf/image_node.h
+-
+msckf/CameraMeasurement.h
 -
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h

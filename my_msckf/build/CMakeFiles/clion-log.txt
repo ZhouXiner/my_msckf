@@ -25,6 +25,7 @@
 -- ==> add_subdirectory(msckf)
 -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
 -- Boost version: 1.65.1
+-- msckf: 2 messages, 0 services
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/zhouxin/Documents/my_msckf/build

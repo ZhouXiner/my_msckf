@@ -413,17 +413,29 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 # Directory level rules for directory msckf
 
 # Convenience name for "all" pass in the directory.
+msckf/all: msckf/CMakeFiles/track_node.dir/all
+msckf/all: msckf/CMakeFiles/msckf_generate_messages.dir/all
 msckf/all: msckf/CMakeFiles/image_node.dir/all
 
 .PHONY : msckf/all
 
 # Convenience name for "clean" pass in the directory.
+msckf/clean: msckf/CMakeFiles/msckf_genpy.dir/clean
+msckf/clean: msckf/CMakeFiles/track_node.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_gennodejs.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_genlisp.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_generate_messages_lisp.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_geneus.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_generate_messages_eus.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_generate_messages_cpp.dir/clean
+msckf/clean: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/clean
 msckf/clean: msckf/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/clean
 msckf/clean: msckf/CMakeFiles/tf2_msgs_generate_messages_py.dir/clean
 msckf/clean: msckf/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/clean
 msckf/clean: msckf/CMakeFiles/tf2_msgs_generate_messages_eus.dir/clean
 msckf/clean: msckf/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean
 msckf/clean: msckf/CMakeFiles/actionlib_generate_messages_py.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_generate_messages.dir/clean
 msckf/clean: msckf/CMakeFiles/actionlib_generate_messages_nodejs.dir/clean
 msckf/clean: msckf/CMakeFiles/actionlib_generate_messages_lisp.dir/clean
 msckf/clean: msckf/CMakeFiles/actionlib_generate_messages_eus.dir/clean
@@ -431,6 +443,7 @@ msckf/clean: msckf/CMakeFiles/tf_generate_messages_nodejs.dir/clean
 msckf/clean: msckf/CMakeFiles/tf_generate_messages_lisp.dir/clean
 msckf/clean: msckf/CMakeFiles/tf_generate_messages_eus.dir/clean
 msckf/clean: msckf/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/clean
 msckf/clean: msckf/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 msckf/clean: msckf/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 msckf/clean: msckf/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
@@ -438,6 +451,7 @@ msckf/clean: msckf/CMakeFiles/tf_generate_messages_cpp.dir/clean
 msckf/clean: msckf/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 msckf/clean: msckf/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 msckf/clean: msckf/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
+msckf/clean: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/clean
 msckf/clean: msckf/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 msckf/clean: msckf/CMakeFiles/nav_msgs_generate_messages_lisp.dir/clean
 msckf/clean: msckf/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
@@ -447,11 +461,13 @@ msckf/clean: msckf/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 msckf/clean: msckf/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 msckf/clean: msckf/CMakeFiles/roscpp_generate_messages_py.dir/clean
 msckf/clean: msckf/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_generate_messages_py.dir/clean
 msckf/clean: msckf/CMakeFiles/nav_msgs_generate_messages_py.dir/clean
 msckf/clean: msckf/CMakeFiles/nav_msgs_generate_messages_cpp.dir/clean
 msckf/clean: msckf/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 msckf/clean: msckf/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 msckf/clean: msckf/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+msckf/clean: msckf/CMakeFiles/msckf_gencpp.dir/clean
 msckf/clean: msckf/CMakeFiles/tf_generate_messages_py.dir/clean
 msckf/clean: msckf/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 msckf/clean: msckf/CMakeFiles/nav_msgs_generate_messages_eus.dir/clean
@@ -476,6 +492,354 @@ msckf/clean: msckf/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 msckf/preinstall:
 
 .PHONY : msckf/preinstall
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_genpy.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_genpy.dir/all: msckf/CMakeFiles/msckf_generate_messages_py.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_genpy.dir/build.make msckf/CMakeFiles/msckf_genpy.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_genpy.dir/build.make msckf/CMakeFiles/msckf_genpy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num= "Built target msckf_genpy"
+.PHONY : msckf/CMakeFiles/msckf_genpy.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_genpy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_genpy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_genpy.dir/rule
+
+# Convenience name for target.
+msckf_genpy: msckf/CMakeFiles/msckf_genpy.dir/rule
+
+.PHONY : msckf_genpy
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_genpy.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_genpy.dir/build.make msckf/CMakeFiles/msckf_genpy.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_genpy.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_genpy.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/track_node.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf2_msgs_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf2_msgs_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/nav_msgs_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/roscpp_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/nav_msgs_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/nav_msgs_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/tf_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/nav_msgs_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_msgs_generate_messages_py.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/actionlib_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/roscpp_generate_messages_eus.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+msckf/CMakeFiles/track_node.dir/all: msckf/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f msckf/CMakeFiles/track_node.dir/build.make msckf/CMakeFiles/track_node.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/track_node.dir/build.make msckf/CMakeFiles/track_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num=26,27 "Built target track_node"
+.PHONY : msckf/CMakeFiles/track_node.dir/all
+
+# Include target in all.
+all: msckf/CMakeFiles/track_node.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/track_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/track_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/track_node.dir/rule
+
+# Convenience name for target.
+track_node: msckf/CMakeFiles/track_node.dir/rule
+
+.PHONY : track_node
+
+# clean rule for target.
+msckf/CMakeFiles/track_node.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/track_node.dir/build.make msckf/CMakeFiles/track_node.dir/clean
+.PHONY : msckf/CMakeFiles/track_node.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/track_node.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_gennodejs.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_gennodejs.dir/all: msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_gennodejs.dir/build.make msckf/CMakeFiles/msckf_gennodejs.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_gennodejs.dir/build.make msckf/CMakeFiles/msckf_gennodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num= "Built target msckf_gennodejs"
+.PHONY : msckf/CMakeFiles/msckf_gennodejs.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_gennodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_gennodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_gennodejs.dir/rule
+
+# Convenience name for target.
+msckf_gennodejs: msckf/CMakeFiles/msckf_gennodejs.dir/rule
+
+.PHONY : msckf_gennodejs
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_gennodejs.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_gennodejs.dir/build.make msckf/CMakeFiles/msckf_gennodejs.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_gennodejs.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_gennodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_genlisp.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_genlisp.dir/all: msckf/CMakeFiles/msckf_generate_messages_lisp.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_genlisp.dir/build.make msckf/CMakeFiles/msckf_genlisp.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_genlisp.dir/build.make msckf/CMakeFiles/msckf_genlisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num= "Built target msckf_genlisp"
+.PHONY : msckf/CMakeFiles/msckf_genlisp.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_genlisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_genlisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_genlisp.dir/rule
+
+# Convenience name for target.
+msckf_genlisp: msckf/CMakeFiles/msckf_genlisp.dir/rule
+
+.PHONY : msckf_genlisp
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_genlisp.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_genlisp.dir/build.make msckf/CMakeFiles/msckf_genlisp.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_genlisp.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_genlisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_generate_messages_lisp.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_generate_messages_lisp.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/all
+msckf/CMakeFiles/msckf_generate_messages_lisp.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+msckf/CMakeFiles/msckf_generate_messages_lisp.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_lisp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_lisp.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_lisp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num=19,20 "Built target msckf_generate_messages_lisp"
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_lisp: msckf/CMakeFiles/msckf_generate_messages_lisp.dir/rule
+
+.PHONY : msckf_generate_messages_lisp
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_generate_messages_lisp.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_lisp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_lisp.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_lisp.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_geneus.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_geneus.dir/all: msckf/CMakeFiles/msckf_generate_messages_eus.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_geneus.dir/build.make msckf/CMakeFiles/msckf_geneus.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_geneus.dir/build.make msckf/CMakeFiles/msckf_geneus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num= "Built target msckf_geneus"
+.PHONY : msckf/CMakeFiles/msckf_geneus.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_geneus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_geneus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_geneus.dir/rule
+
+# Convenience name for target.
+msckf_geneus: msckf/CMakeFiles/msckf_geneus.dir/rule
+
+.PHONY : msckf_geneus
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_geneus.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_geneus.dir/build.make msckf/CMakeFiles/msckf_geneus.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_geneus.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_geneus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_generate_messages_eus.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_generate_messages_eus.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/all
+msckf/CMakeFiles/msckf_generate_messages_eus.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/all
+msckf/CMakeFiles/msckf_generate_messages_eus.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_eus.dir/build.make msckf/CMakeFiles/msckf_generate_messages_eus.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_eus.dir/build.make msckf/CMakeFiles/msckf_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num=16,17,18 "Built target msckf_generate_messages_eus"
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_eus: msckf/CMakeFiles/msckf_generate_messages_eus.dir/rule
+
+.PHONY : msckf_generate_messages_eus
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_generate_messages_eus.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_eus.dir/build.make msckf/CMakeFiles/msckf_generate_messages_eus.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_eus.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_generate_messages_eus.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_generate_messages_cpp.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_generate_messages_cpp.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/all
+msckf/CMakeFiles/msckf_generate_messages_cpp.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+msckf/CMakeFiles/msckf_generate_messages_cpp.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_cpp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_cpp.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_cpp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num=14,15 "Built target msckf_generate_messages_cpp"
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_cpp: msckf/CMakeFiles/msckf_generate_messages_cpp.dir/rule
+
+.PHONY : msckf_generate_messages_cpp
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_generate_messages_cpp.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_cpp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_cpp.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_cpp.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/all:
+	$(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num= "Built target _msckf_generate_messages_check_deps_CameraMeasurement"
+.PHONY : msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/rule
+
+# Convenience name for target.
+_msckf_generate_messages_check_deps_CameraMeasurement: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/rule
+
+.PHONY : _msckf_generate_messages_check_deps_CameraMeasurement
+
+# clean rule for target.
+msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/clean
+.PHONY : msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target msckf/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir
@@ -666,6 +1030,47 @@ msckf/CMakeFiles/actionlib_generate_messages_py.dir/clean:
 
 # clean rule for target.
 clean: msckf/CMakeFiles/actionlib_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_generate_messages.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_generate_messages.dir/all: msckf/CMakeFiles/msckf_generate_messages_lisp.dir/all
+msckf/CMakeFiles/msckf_generate_messages.dir/all: msckf/CMakeFiles/msckf_generate_messages_eus.dir/all
+msckf/CMakeFiles/msckf_generate_messages.dir/all: msckf/CMakeFiles/msckf_generate_messages_cpp.dir/all
+msckf/CMakeFiles/msckf_generate_messages.dir/all: msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/msckf_generate_messages.dir/all: msckf/CMakeFiles/msckf_generate_messages_py.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages.dir/build.make msckf/CMakeFiles/msckf_generate_messages.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages.dir/build.make msckf/CMakeFiles/msckf_generate_messages.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num= "Built target msckf_generate_messages"
+.PHONY : msckf/CMakeFiles/msckf_generate_messages.dir/all
+
+# Include target in all.
+all: msckf/CMakeFiles/msckf_generate_messages.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_generate_messages.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 12
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_generate_messages.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages: msckf/CMakeFiles/msckf_generate_messages.dir/rule
+
+.PHONY : msckf_generate_messages
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_generate_messages.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages.dir/build.make msckf/CMakeFiles/msckf_generate_messages.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_generate_messages.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_generate_messages.dir/clean
 
 .PHONY : clean
 
@@ -894,6 +1299,40 @@ clean: msckf/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_generate_messages_nodejs.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/all
+msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/build.make msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/build.make msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num=21,22 "Built target msckf_generate_messages_nodejs"
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_nodejs: msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/rule
+
+.PHONY : msckf_generate_messages_nodejs
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/build.make msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target msckf/CMakeFiles/std_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
@@ -1114,6 +1553,38 @@ msckf/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean:
 
 # clean rule for target.
 clean: msckf/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/all:
+	$(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num= "Built target _msckf_generate_messages_check_deps_FeatureMeasurement"
+.PHONY : msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/rule
+
+# Convenience name for target.
+_msckf_generate_messages_check_deps_FeatureMeasurement: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/rule
+
+.PHONY : _msckf_generate_messages_check_deps_FeatureMeasurement
+
+# clean rule for target.
+msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/clean
+.PHONY : msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/clean
 
 .PHONY : clean
 
@@ -1406,6 +1877,40 @@ clean: msckf/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_generate_messages_py.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_generate_messages_py.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/all
+msckf/CMakeFiles/msckf_generate_messages_py.dir/all: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/all
+msckf/CMakeFiles/msckf_generate_messages_py.dir/all: msckf/CMakeFiles/std_msgs_generate_messages_py.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_py.dir/build.make msckf/CMakeFiles/msckf_generate_messages_py.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_py.dir/build.make msckf/CMakeFiles/msckf_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num=23,24,25 "Built target msckf_generate_messages_py"
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_py.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_py: msckf/CMakeFiles/msckf_generate_messages_py.dir/rule
+
+.PHONY : msckf_generate_messages_py
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_generate_messages_py.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_py.dir/build.make msckf/CMakeFiles/msckf_generate_messages_py.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_py.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_generate_messages_py.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target msckf/CMakeFiles/nav_msgs_generate_messages_py.dir
 
 # All Build rule for target.
@@ -1562,6 +2067,38 @@ msckf/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean:
 
 # clean rule for target.
 clean: msckf/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target msckf/CMakeFiles/msckf_gencpp.dir
+
+# All Build rule for target.
+msckf/CMakeFiles/msckf_gencpp.dir/all: msckf/CMakeFiles/msckf_generate_messages_cpp.dir/all
+	$(MAKE) -f msckf/CMakeFiles/msckf_gencpp.dir/build.make msckf/CMakeFiles/msckf_gencpp.dir/depend
+	$(MAKE) -f msckf/CMakeFiles/msckf_gencpp.dir/build.make msckf/CMakeFiles/msckf_gencpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zhouxin/Documents/my_msckf/build/CMakeFiles --progress-num= "Built target msckf_gencpp"
+.PHONY : msckf/CMakeFiles/msckf_gencpp.dir/all
+
+# Build rule for subdir invocation for target.
+msckf/CMakeFiles/msckf_gencpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_gencpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zhouxin/Documents/my_msckf/build/CMakeFiles 0
+.PHONY : msckf/CMakeFiles/msckf_gencpp.dir/rule
+
+# Convenience name for target.
+msckf_gencpp: msckf/CMakeFiles/msckf_gencpp.dir/rule
+
+.PHONY : msckf_gencpp
+
+# clean rule for target.
+msckf/CMakeFiles/msckf_gencpp.dir/clean:
+	$(MAKE) -f msckf/CMakeFiles/msckf_gencpp.dir/build.make msckf/CMakeFiles/msckf_gencpp.dir/clean
+.PHONY : msckf/CMakeFiles/msckf_gencpp.dir/clean
+
+# clean rule for target.
+clean: msckf/CMakeFiles/msckf_gencpp.dir/clean
 
 .PHONY : clean
 

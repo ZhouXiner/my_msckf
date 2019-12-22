@@ -285,6 +285,123 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
+# Target rules for targets named msckf_genpy
+
+# Build rule for target.
+msckf_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_genpy
+.PHONY : msckf_genpy
+
+# fast build rule for target.
+msckf_genpy/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_genpy.dir/build.make msckf/CMakeFiles/msckf_genpy.dir/build
+.PHONY : msckf_genpy/fast
+
+#=============================================================================
+# Target rules for targets named track_node
+
+# Build rule for target.
+track_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 track_node
+.PHONY : track_node
+
+# fast build rule for target.
+track_node/fast:
+	$(MAKE) -f msckf/CMakeFiles/track_node.dir/build.make msckf/CMakeFiles/track_node.dir/build
+.PHONY : track_node/fast
+
+#=============================================================================
+# Target rules for targets named msckf_gennodejs
+
+# Build rule for target.
+msckf_gennodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_gennodejs
+.PHONY : msckf_gennodejs
+
+# fast build rule for target.
+msckf_gennodejs/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_gennodejs.dir/build.make msckf/CMakeFiles/msckf_gennodejs.dir/build
+.PHONY : msckf_gennodejs/fast
+
+#=============================================================================
+# Target rules for targets named msckf_genlisp
+
+# Build rule for target.
+msckf_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_genlisp
+.PHONY : msckf_genlisp
+
+# fast build rule for target.
+msckf_genlisp/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_genlisp.dir/build.make msckf/CMakeFiles/msckf_genlisp.dir/build
+.PHONY : msckf_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named msckf_generate_messages_lisp
+
+# Build rule for target.
+msckf_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_generate_messages_lisp
+.PHONY : msckf_generate_messages_lisp
+
+# fast build rule for target.
+msckf_generate_messages_lisp/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_lisp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_lisp.dir/build
+.PHONY : msckf_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named msckf_geneus
+
+# Build rule for target.
+msckf_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_geneus
+.PHONY : msckf_geneus
+
+# fast build rule for target.
+msckf_geneus/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_geneus.dir/build.make msckf/CMakeFiles/msckf_geneus.dir/build
+.PHONY : msckf_geneus/fast
+
+#=============================================================================
+# Target rules for targets named msckf_generate_messages_eus
+
+# Build rule for target.
+msckf_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_generate_messages_eus
+.PHONY : msckf_generate_messages_eus
+
+# fast build rule for target.
+msckf_generate_messages_eus/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_eus.dir/build.make msckf/CMakeFiles/msckf_generate_messages_eus.dir/build
+.PHONY : msckf_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named msckf_generate_messages_cpp
+
+# Build rule for target.
+msckf_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_generate_messages_cpp
+.PHONY : msckf_generate_messages_cpp
+
+# fast build rule for target.
+msckf_generate_messages_cpp/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_cpp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_cpp.dir/build
+.PHONY : msckf_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named _msckf_generate_messages_check_deps_CameraMeasurement
+
+# Build rule for target.
+_msckf_generate_messages_check_deps_CameraMeasurement: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _msckf_generate_messages_check_deps_CameraMeasurement
+.PHONY : _msckf_generate_messages_check_deps_CameraMeasurement
+
+# fast build rule for target.
+_msckf_generate_messages_check_deps_CameraMeasurement/fast:
+	$(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/build
+.PHONY : _msckf_generate_messages_check_deps_CameraMeasurement/fast
+
+#=============================================================================
 # Target rules for targets named tf2_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -361,6 +478,19 @@ actionlib_generate_messages_py: cmake_check_build_system
 actionlib_generate_messages_py/fast:
 	$(MAKE) -f msckf/CMakeFiles/actionlib_generate_messages_py.dir/build.make msckf/CMakeFiles/actionlib_generate_messages_py.dir/build
 .PHONY : actionlib_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named msckf_generate_messages
+
+# Build rule for target.
+msckf_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_generate_messages
+.PHONY : msckf_generate_messages
+
+# fast build rule for target.
+msckf_generate_messages/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages.dir/build.make msckf/CMakeFiles/msckf_generate_messages.dir/build
+.PHONY : msckf_generate_messages/fast
 
 #=============================================================================
 # Target rules for targets named actionlib_generate_messages_nodejs
@@ -454,6 +584,19 @@ std_msgs_generate_messages_nodejs/fast:
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named msckf_generate_messages_nodejs
+
+# Build rule for target.
+msckf_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_generate_messages_nodejs
+.PHONY : msckf_generate_messages_nodejs
+
+# fast build rule for target.
+msckf_generate_messages_nodejs/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/build.make msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/build
+.PHONY : msckf_generate_messages_nodejs/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_lisp
 
 # Build rule for target.
@@ -543,6 +686,19 @@ nav_msgs_generate_messages_nodejs: cmake_check_build_system
 nav_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f msckf/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make msckf/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
 .PHONY : nav_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named _msckf_generate_messages_check_deps_FeatureMeasurement
+
+# Build rule for target.
+_msckf_generate_messages_check_deps_FeatureMeasurement: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _msckf_generate_messages_check_deps_FeatureMeasurement
+.PHONY : _msckf_generate_messages_check_deps_FeatureMeasurement
+
+# fast build rule for target.
+_msckf_generate_messages_check_deps_FeatureMeasurement/fast:
+	$(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/build
+.PHONY : _msckf_generate_messages_check_deps_FeatureMeasurement/fast
 
 #=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_nodejs
@@ -662,6 +818,19 @@ std_msgs_generate_messages_py/fast:
 .PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named msckf_generate_messages_py
+
+# Build rule for target.
+msckf_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_generate_messages_py
+.PHONY : msckf_generate_messages_py
+
+# fast build rule for target.
+msckf_generate_messages_py/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_py.dir/build.make msckf/CMakeFiles/msckf_generate_messages_py.dir/build
+.PHONY : msckf_generate_messages_py/fast
+
+#=============================================================================
 # Target rules for targets named nav_msgs_generate_messages_py
 
 # Build rule for target.
@@ -725,6 +894,19 @@ geometry_msgs_generate_messages_lisp: cmake_check_build_system
 geometry_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f msckf/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make msckf/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 .PHONY : geometry_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named msckf_gencpp
+
+# Build rule for target.
+msckf_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 msckf_gencpp
+.PHONY : msckf_gencpp
+
+# fast build rule for target.
+msckf_gencpp/fast:
+	$(MAKE) -f msckf/CMakeFiles/msckf_gencpp.dir/build.make msckf/CMakeFiles/msckf_gencpp.dir/build
+.PHONY : msckf_gencpp/fast
 
 #=============================================================================
 # Target rules for targets named tf_generate_messages_py
@@ -969,12 +1151,22 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... msckf_genpy"
+	@echo "... track_node"
+	@echo "... msckf_gennodejs"
+	@echo "... msckf_genlisp"
+	@echo "... msckf_generate_messages_lisp"
+	@echo "... msckf_geneus"
+	@echo "... msckf_generate_messages_eus"
+	@echo "... msckf_generate_messages_cpp"
+	@echo "... _msckf_generate_messages_check_deps_CameraMeasurement"
 	@echo "... tf2_msgs_generate_messages_nodejs"
 	@echo "... tf2_msgs_generate_messages_py"
 	@echo "... tf2_msgs_generate_messages_lisp"
 	@echo "... tf2_msgs_generate_messages_eus"
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... actionlib_generate_messages_py"
+	@echo "... msckf_generate_messages"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_eus"
@@ -982,6 +1174,7 @@ help:
 	@echo "... tf_generate_messages_lisp"
 	@echo "... tf_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... msckf_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... sensor_msgs_generate_messages_cpp"
@@ -989,6 +1182,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... nav_msgs_generate_messages_nodejs"
+	@echo "... _msckf_generate_messages_check_deps_FeatureMeasurement"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... nav_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_lisp"
@@ -998,11 +1192,13 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... std_msgs_generate_messages_py"
+	@echo "... msckf_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... msckf_gencpp"
 	@echo "... tf_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_eus"

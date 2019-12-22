@@ -6,22 +6,37 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
 find_package(catkin REQUIRED COMPONENTS
-  cv_bridge
-  geometry_msgs
-  nav_msgs
-  random_numbers
-  roscpp
-  rospy
-  sensor_msgs
-  std_msgs
-  tf
-  message_filters
+        cv_bridge
+        geometry_msgs
+        nav_msgs
+        random_numbers
+        roscpp
+        rospy
+        sensor_msgs
+        std_msgs
+        tf
+        message_filters
+        message_generation
 )
 
 find_package(Boost REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)
 
+##################
+## ROS messages ##
+##################
+add_message_files(
+        FILES
+
+        FeatureMeasurement.msg
+        CameraMeasurement.msg
+)
+
+generate_messages(
+        DEPENDENCIES
+        std_msgs
+)
 # message(WARNING "OpenCV_VERSION: ${OpenCV_VERSION}")
 
 ###################################
@@ -34,10 +49,10 @@ find_package(OpenCV REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES msckf
-#  CATKIN_DEPENDS cv_bridge geometry_msgs nav_msgs random_numbers roscpp rospy sensor_msgs std_msgs tf
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  LIBRARIES msckf
+  CATKIN_DEPENDS cv_bridge geometry_msgs nav_msgs random_numbers roscpp rospy sensor_msgs std_msgs tf message_runtime
+  DEPENDS  Boost EIGEN3 OpenCV
 )
 
 ###########
@@ -56,8 +71,12 @@ include_directories(
 
 add_executable(image_node src/image_node.cpp)
 target_link_libraries(image_node ${catkin_LIBRARIES} ${OpenCV_LIBS} ${Boost_LIBRARIES})
-
 add_dependencies(image_node ${catkin_EXPORTED_TARGETS})
+
+
+add_executable(track_node src/track_node.cpp)
+target_link_libraries(track_node ${catkin_LIBRARIES} ${OpenCV_LIBS} ${Boost_LIBRARIES})
+add_dependencies(track_node ${catkin_EXPORTED_TARGETS})
 #############
 ## Testing ##
 #############

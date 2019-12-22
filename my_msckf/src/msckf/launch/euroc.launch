@@ -1,7 +1,12 @@
 <launch>
     <arg name="config_path" default = "/home/zhouxin/Documents/my_msckf/src/msckf/config/euroc.yaml" />
+
+    <node name="track_node" pkg="msckf" type = "track_node" output="screen">
+        <rosparam command="load" file="$(arg config_path)" />
+    </node>
     
     <node name="image_node" pkg="msckf" type = "image_node" output="screen">
         <rosparam command="load" file="$(arg config_path)" />
     </node>
+
 </launch>

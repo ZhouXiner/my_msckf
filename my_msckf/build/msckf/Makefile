@@ -168,6 +168,141 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+msckf/CMakeFiles/msckf_genpy.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_genpy.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_genpy.dir/rule
+
+# Convenience name for target.
+msckf_genpy: msckf/CMakeFiles/msckf_genpy.dir/rule
+
+.PHONY : msckf_genpy
+
+# fast build rule for target.
+msckf_genpy/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_genpy.dir/build.make msckf/CMakeFiles/msckf_genpy.dir/build
+.PHONY : msckf_genpy/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/track_node.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/track_node.dir/rule
+.PHONY : msckf/CMakeFiles/track_node.dir/rule
+
+# Convenience name for target.
+track_node: msckf/CMakeFiles/track_node.dir/rule
+
+.PHONY : track_node
+
+# fast build rule for target.
+track_node/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/track_node.dir/build.make msckf/CMakeFiles/track_node.dir/build
+.PHONY : track_node/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/msckf_gennodejs.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_gennodejs.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_gennodejs.dir/rule
+
+# Convenience name for target.
+msckf_gennodejs: msckf/CMakeFiles/msckf_gennodejs.dir/rule
+
+.PHONY : msckf_gennodejs
+
+# fast build rule for target.
+msckf_gennodejs/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_gennodejs.dir/build.make msckf/CMakeFiles/msckf_gennodejs.dir/build
+.PHONY : msckf_gennodejs/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/msckf_genlisp.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_genlisp.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_genlisp.dir/rule
+
+# Convenience name for target.
+msckf_genlisp: msckf/CMakeFiles/msckf_genlisp.dir/rule
+
+.PHONY : msckf_genlisp
+
+# fast build rule for target.
+msckf_genlisp/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_genlisp.dir/build.make msckf/CMakeFiles/msckf_genlisp.dir/build
+.PHONY : msckf_genlisp/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/msckf_generate_messages_lisp.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_lisp.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_lisp: msckf/CMakeFiles/msckf_generate_messages_lisp.dir/rule
+
+.PHONY : msckf_generate_messages_lisp
+
+# fast build rule for target.
+msckf_generate_messages_lisp/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_lisp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_lisp.dir/build
+.PHONY : msckf_generate_messages_lisp/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/msckf_geneus.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_geneus.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_geneus.dir/rule
+
+# Convenience name for target.
+msckf_geneus: msckf/CMakeFiles/msckf_geneus.dir/rule
+
+.PHONY : msckf_geneus
+
+# fast build rule for target.
+msckf_geneus/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_geneus.dir/build.make msckf/CMakeFiles/msckf_geneus.dir/build
+.PHONY : msckf_geneus/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/msckf_generate_messages_eus.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_eus.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_eus: msckf/CMakeFiles/msckf_generate_messages_eus.dir/rule
+
+.PHONY : msckf_generate_messages_eus
+
+# fast build rule for target.
+msckf_generate_messages_eus/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_eus.dir/build.make msckf/CMakeFiles/msckf_generate_messages_eus.dir/build
+.PHONY : msckf_generate_messages_eus/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/msckf_generate_messages_cpp.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_cpp.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_cpp: msckf/CMakeFiles/msckf_generate_messages_cpp.dir/rule
+
+.PHONY : msckf_generate_messages_cpp
+
+# fast build rule for target.
+msckf_generate_messages_cpp/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_cpp.dir/build.make msckf/CMakeFiles/msckf_generate_messages_cpp.dir/build
+.PHONY : msckf_generate_messages_cpp/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/rule
+.PHONY : msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/rule
+
+# Convenience name for target.
+_msckf_generate_messages_check_deps_CameraMeasurement: msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/rule
+
+.PHONY : _msckf_generate_messages_check_deps_CameraMeasurement
+
+# fast build rule for target.
+_msckf_generate_messages_check_deps_CameraMeasurement/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_CameraMeasurement.dir/build
+.PHONY : _msckf_generate_messages_check_deps_CameraMeasurement/fast
+
+# Convenience name for target.
 msckf/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
 .PHONY : msckf/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
@@ -256,6 +391,21 @@ actionlib_generate_messages_py: msckf/CMakeFiles/actionlib_generate_messages_py.
 actionlib_generate_messages_py/fast:
 	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/actionlib_generate_messages_py.dir/build.make msckf/CMakeFiles/actionlib_generate_messages_py.dir/build
 .PHONY : actionlib_generate_messages_py/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/msckf_generate_messages.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_generate_messages.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages: msckf/CMakeFiles/msckf_generate_messages.dir/rule
+
+.PHONY : msckf_generate_messages
+
+# fast build rule for target.
+msckf_generate_messages/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_generate_messages.dir/build.make msckf/CMakeFiles/msckf_generate_messages.dir/build
+.PHONY : msckf_generate_messages/fast
 
 # Convenience name for target.
 msckf/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
@@ -363,6 +513,21 @@ std_msgs_generate_messages_nodejs/fast:
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
+msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_nodejs: msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/rule
+
+.PHONY : msckf_generate_messages_nodejs
+
+# fast build rule for target.
+msckf_generate_messages_nodejs/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/build.make msckf/CMakeFiles/msckf_generate_messages_nodejs.dir/build
+.PHONY : msckf_generate_messages_nodejs/fast
+
+# Convenience name for target.
 msckf/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
 	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 .PHONY : msckf/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
@@ -466,6 +631,21 @@ nav_msgs_generate_messages_nodejs: msckf/CMakeFiles/nav_msgs_generate_messages_n
 nav_msgs_generate_messages_nodejs/fast:
 	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make msckf/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
 .PHONY : nav_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/rule
+.PHONY : msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/rule
+
+# Convenience name for target.
+_msckf_generate_messages_check_deps_FeatureMeasurement: msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/rule
+
+.PHONY : _msckf_generate_messages_check_deps_FeatureMeasurement
+
+# fast build rule for target.
+_msckf_generate_messages_check_deps_FeatureMeasurement/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/build.make msckf/CMakeFiles/_msckf_generate_messages_check_deps_FeatureMeasurement.dir/build
+.PHONY : _msckf_generate_messages_check_deps_FeatureMeasurement/fast
 
 # Convenience name for target.
 msckf/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
@@ -603,6 +783,21 @@ std_msgs_generate_messages_py/fast:
 .PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+msckf/CMakeFiles/msckf_generate_messages_py.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_generate_messages_py.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_generate_messages_py.dir/rule
+
+# Convenience name for target.
+msckf_generate_messages_py: msckf/CMakeFiles/msckf_generate_messages_py.dir/rule
+
+.PHONY : msckf_generate_messages_py
+
+# fast build rule for target.
+msckf_generate_messages_py/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_generate_messages_py.dir/build.make msckf/CMakeFiles/msckf_generate_messages_py.dir/build
+.PHONY : msckf_generate_messages_py/fast
+
+# Convenience name for target.
 msckf/CMakeFiles/nav_msgs_generate_messages_py.dir/rule:
 	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
 .PHONY : msckf/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
@@ -676,6 +871,21 @@ geometry_msgs_generate_messages_lisp: msckf/CMakeFiles/geometry_msgs_generate_me
 geometry_msgs_generate_messages_lisp/fast:
 	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make msckf/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 .PHONY : geometry_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+msckf/CMakeFiles/msckf_gencpp.dir/rule:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f CMakeFiles/Makefile2 msckf/CMakeFiles/msckf_gencpp.dir/rule
+.PHONY : msckf/CMakeFiles/msckf_gencpp.dir/rule
+
+# Convenience name for target.
+msckf_gencpp: msckf/CMakeFiles/msckf_gencpp.dir/rule
+
+.PHONY : msckf_gencpp
+
+# fast build rule for target.
+msckf_gencpp/fast:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/msckf_gencpp.dir/build.make msckf/CMakeFiles/msckf_gencpp.dir/build
+.PHONY : msckf_gencpp/fast
 
 # Convenience name for target.
 msckf/CMakeFiles/tf_generate_messages_py.dir/rule:
@@ -959,13 +1169,49 @@ src/image_node.cpp.s:
 	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/image_node.dir/build.make msckf/CMakeFiles/image_node.dir/src/image_node.cpp.s
 .PHONY : src/image_node.cpp.s
 
+src/track_node.o: src/track_node.cpp.o
+
+.PHONY : src/track_node.o
+
+# target to build an object file
+src/track_node.cpp.o:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/track_node.dir/build.make msckf/CMakeFiles/track_node.dir/src/track_node.cpp.o
+.PHONY : src/track_node.cpp.o
+
+src/track_node.i: src/track_node.cpp.i
+
+.PHONY : src/track_node.i
+
+# target to preprocess a source file
+src/track_node.cpp.i:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/track_node.dir/build.make msckf/CMakeFiles/track_node.dir/src/track_node.cpp.i
+.PHONY : src/track_node.cpp.i
+
+src/track_node.s: src/track_node.cpp.s
+
+.PHONY : src/track_node.s
+
+# target to generate assembly for a file
+src/track_node.cpp.s:
+	cd /home/zhouxin/Documents/my_msckf/build && $(MAKE) -f msckf/CMakeFiles/track_node.dir/build.make msckf/CMakeFiles/track_node.dir/src/track_node.cpp.s
+.PHONY : src/track_node.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... msckf_genpy"
+	@echo "... track_node"
+	@echo "... msckf_gennodejs"
+	@echo "... msckf_genlisp"
+	@echo "... msckf_generate_messages_lisp"
+	@echo "... msckf_geneus"
+	@echo "... msckf_generate_messages_eus"
 	@echo "... list_install_components"
+	@echo "... msckf_generate_messages_cpp"
+	@echo "... _msckf_generate_messages_check_deps_CameraMeasurement"
 	@echo "... tf2_msgs_generate_messages_nodejs"
 	@echo "... install/strip"
 	@echo "... tf2_msgs_generate_messages_py"
@@ -974,6 +1220,7 @@ help:
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... actionlib_generate_messages_py"
 	@echo "... test"
+	@echo "... msckf_generate_messages"
 	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... actionlib_generate_messages_lisp"
 	@echo "... actionlib_generate_messages_eus"
@@ -981,6 +1228,7 @@ help:
 	@echo "... tf_generate_messages_lisp"
 	@echo "... tf_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... msckf_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... sensor_msgs_generate_messages_cpp"
@@ -988,6 +1236,7 @@ help:
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... nav_msgs_generate_messages_nodejs"
+	@echo "... _msckf_generate_messages_check_deps_FeatureMeasurement"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... edit_cache"
 	@echo "... nav_msgs_generate_messages_lisp"
@@ -999,12 +1248,14 @@ help:
 	@echo "... roscpp_generate_messages_py"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... install"
+	@echo "... msckf_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_cpp"
 	@echo "... install/local"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... msckf_gencpp"
 	@echo "... tf_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_eus"
@@ -1026,6 +1277,9 @@ help:
 	@echo "... src/image_node.o"
 	@echo "... src/image_node.i"
 	@echo "... src/image_node.s"
+	@echo "... src/track_node.o"
+	@echo "... src/track_node.i"
+	@echo "... src/track_node.s"
 .PHONY : help
 
 

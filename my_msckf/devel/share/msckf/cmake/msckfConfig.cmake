@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(msckf_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT " " STREQUAL " ")
+if(NOT "/home/zhouxin/Documents/my_msckf/devel/include;/home/zhouxin/Documents/my_msckf/src/msckf/include;/usr/include;/usr/include/eigen3;/usr/local/include;/usr/local/include/opencv " STREQUAL " ")
   set(msckf_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "/home/zhouxin/Documents/my_msckf/devel/include;/home/zhouxin/Documents/my_msckf/src/msckf/include;/usr/include;/usr/include/eigen3;/usr/local/include;/usr/local/include/opencv")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -116,7 +116,7 @@ if(NOT " " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "msckf;/usr/local/lib/libopencv_calib3d.so.3.4.7;/usr/local/lib/libopencv_core.so.3.4.7;/usr/local/lib/libopencv_dnn.so.3.4.7;/usr/local/lib/libopencv_features2d.so.3.4.7;/usr/local/lib/libopencv_flann.so.3.4.7;/usr/local/lib/libopencv_highgui.so.3.4.7;/usr/local/lib/libopencv_imgcodecs.so.3.4.7;/usr/local/lib/libopencv_imgproc.so.3.4.7;/usr/local/lib/libopencv_ml.so.3.4.7;/usr/local/lib/libopencv_objdetect.so.3.4.7;/usr/local/lib/libopencv_photo.so.3.4.7;/usr/local/lib/libopencv_shape.so.3.4.7;/usr/local/lib/libopencv_stitching.so.3.4.7;/usr/local/lib/libopencv_superres.so.3.4.7;/usr/local/lib/libopencv_video.so.3.4.7;/usr/local/lib/libopencv_videoio.so.3.4.7;/usr/local/lib/libopencv_videostab.so.3.4.7;/usr/local/lib/libopencv_viz.so.3.4.7;/usr/local/lib/libopencv_aruco.so.3.4.7;/usr/local/lib/libopencv_bgsegm.so.3.4.7;/usr/local/lib/libopencv_bioinspired.so.3.4.7;/usr/local/lib/libopencv_ccalib.so.3.4.7;/usr/local/lib/libopencv_datasets.so.3.4.7;/usr/local/lib/libopencv_dnn_objdetect.so.3.4.7;/usr/local/lib/libopencv_dpm.so.3.4.7;/usr/local/lib/libopencv_face.so.3.4.7;/usr/local/lib/libopencv_freetype.so.3.4.7;/usr/local/lib/libopencv_fuzzy.so.3.4.7;/usr/local/lib/libopencv_hdf.so.3.4.7;/usr/local/lib/libopencv_hfs.so.3.4.7;/usr/local/lib/libopencv_img_hash.so.3.4.7;/usr/local/lib/libopencv_line_descriptor.so.3.4.7;/usr/local/lib/libopencv_optflow.so.3.4.7;/usr/local/lib/libopencv_phase_unwrapping.so.3.4.7;/usr/local/lib/libopencv_plot.so.3.4.7;/usr/local/lib/libopencv_reg.so.3.4.7;/usr/local/lib/libopencv_rgbd.so.3.4.7;/usr/local/lib/libopencv_saliency.so.3.4.7;/usr/local/lib/libopencv_stereo.so.3.4.7;/usr/local/lib/libopencv_structured_light.so.3.4.7;/usr/local/lib/libopencv_surface_matching.so.3.4.7;/usr/local/lib/libopencv_text.so.3.4.7;/usr/local/lib/libopencv_tracking.so.3.4.7;/usr/local/lib/libopencv_xfeatures2d.so.3.4.7;/usr/local/lib/libopencv_ximgproc.so.3.4.7;/usr/local/lib/libopencv_xobjdetect.so.3.4.7;/usr/local/lib/libopencv_xphoto.so.3.4.7")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -177,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(msckf_EXPORTED_TARGETS "")
+set(msckf_EXPORTED_TARGETS "msckf_generate_messages_cpp;msckf_generate_messages_eus;msckf_generate_messages_lisp;msckf_generate_messages_nodejs;msckf_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${msckf_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -185,7 +185,7 @@ foreach(t ${msckf_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "cv_bridge;geometry_msgs;nav_msgs;random_numbers;roscpp;rospy;sensor_msgs;std_msgs;tf;message_runtime")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -214,7 +214,7 @@ foreach(depend ${depends})
   list(APPEND msckf_EXPORTED_TARGETS ${${msckf_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "msckf-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${msckf_DIR}/${extra})
