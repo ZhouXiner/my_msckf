@@ -1,5 +1,19 @@
-/home/zhouxin/Documents/app/clion-2019.2.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCATKIN_DEVEL_PREFIX=/home/zhouxin/Documents/my_msckf/devel -DCMAKE_INSTALL_PREFIX=/home/zhouxin/Documents/my_msckf/install -G "CodeBlocks - Unix Makefiles" /home/zhouxin/Documents/my_msckf/src
--- Using CATKIN_DEVEL_PREFIX: /home/zhouxin/Documents/my_msckf/devel
+/home/zhouxin/Documents/app/clion-2019.2.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCATKIN_DEVEL_PREFIX=/home/zhouxin/Desktop/my_msckf/devel -DCMAKE_INSTALL_PREFIX=/home/zhouxin/Desktop/my_msckf/install -G "CodeBlocks - Unix Makefiles" /home/zhouxin/Desktop/my_msckf/src
+-- The C compiler identification is GNU 7.4.0
+-- The CXX compiler identification is GNU 7.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Using CATKIN_DEVEL_PREFIX: /home/zhouxin/Desktop/my_msckf/devel
 -- Using CMAKE_PREFIX_PATH: /opt/ros/melodic
 -- This workspace overlays: /opt/ros/melodic
 -- Found PythonInterp: /usr/bin/python2 (found suitable version "2.7.15", minimum required is "2") 
@@ -8,7 +22,7 @@
 -- Using empy: /usr/bin/empy
 -- Using CATKIN_ENABLE_TESTING: ON
 -- Call enable_testing()
--- Using CATKIN_TEST_RESULTS_DIR: /home/zhouxin/Documents/my_msckf/build/test_results
+-- Using CATKIN_TEST_RESULTS_DIR: /home/zhouxin/Desktop/my_msckf/build/test_results
 -- Forcing gtest/gmock from source, though one was otherwise available.
 -- Found gtest sources under '/usr/src/googletest': gtests will be built
 -- Found gmock sources under '/usr/src/googletest': gmock will be built
@@ -18,14 +32,26 @@
 -- BUILD_SHARED_LIBS is on
 -- BUILD_SHARED_LIBS is on
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- ~~  traversing 1 packages in topological order:
--- ~~  - msckf
+-- ~~  traversing 2 packages in topological order:
+-- ~~  - image_node
+-- ~~  - track_node
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- +++ processing catkin package: 'msckf'
--- ==> add_subdirectory(msckf)
+-- +++ processing catkin package: 'image_node'
+-- ==> add_subdirectory(my_msckf/image_node)
 -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
 -- Boost version: 1.65.1
--- msckf: 2 messages, 0 services
--- Configuring done
--- Generating done
--- Build files have been written to: /home/zhouxin/Documents/my_msckf/build
+-- image_node: 2 messages, 0 services
+-- +++ processing catkin package: 'track_node'
+-- ==> add_subdirectory(my_msckf/track_node)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- Boost version: 1.65.1
+CMake Error at /opt/ros/melodic/share/genmsg/cmake/genmsg-extras.cmake:94 (message):
+  add_message_files() directory not found:
+  /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/msg
+Call Stack (most recent call first):
+  my_msckf/track_node/CMakeLists.txt:29 (add_message_files)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/zhouxin/Desktop/my_msckf/build/CMakeFiles/CMakeOutput.log".
+See also "/home/zhouxin/Desktop/my_msckf/build/CMakeFiles/CMakeError.log".

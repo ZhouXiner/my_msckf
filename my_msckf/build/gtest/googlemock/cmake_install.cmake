@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/zhouxin/Documents/my_msckf/install")
+  set(CMAKE_INSTALL_PREFIX "/home/zhouxin/Desktop/my_msckf/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/zhouxin/Documents/my_msckf/build/gtest/googlemock/gtest/cmake_install.cmake")
+  include("/home/zhouxin/Desktop/my_msckf/build/gtest/googlemock/gtest/cmake_install.cmake")
 
 endif()
 

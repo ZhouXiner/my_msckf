@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/zhouxin/Documents/app/clion-2019.2.2/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /home/zhouxin/Documents/app/clion-2019.2.2/bin/cmake/linux/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zhouxin/Documents/my_msckf/src
+CMAKE_SOURCE_DIR = /home/zhouxin/Desktop/my_msckf/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zhouxin/Documents/my_msckf/build
+CMAKE_BINARY_DIR = /home/zhouxin/Desktop/my_msckf/build
 
 # Utility rule file for doxygen.
 
@@ -67,6 +67,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd /home/zhouxin/Documents/my_msckf/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zhouxin/Documents/my_msckf/src /home/zhouxin/Documents/my_msckf/src /home/zhouxin/Documents/my_msckf/build /home/zhouxin/Documents/my_msckf/build /home/zhouxin/Documents/my_msckf/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zhouxin/Desktop/my_msckf/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zhouxin/Desktop/my_msckf/src /home/zhouxin/Desktop/my_msckf/src /home/zhouxin/Desktop/my_msckf/build /home/zhouxin/Desktop/my_msckf/build /home/zhouxin/Desktop/my_msckf/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

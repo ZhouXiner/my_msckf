@@ -1,8 +1,8 @@
-# Install script for directory: /home/zhouxin/Documents/my_msckf/src
+# Install script for directory: /home/zhouxin/Desktop/my_msckf/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/zhouxin/Documents/my_msckf/install")
+  set(CMAKE_INSTALL_PREFIX "/home/zhouxin/Desktop/my_msckf/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,89 +49,90 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zhouxin/Documents/my_msckf/install/_setup_util.py")
+   "/home/zhouxin/Desktop/my_msckf/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zhouxin/Documents/my_msckf/install" TYPE PROGRAM FILES "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/home/zhouxin/Desktop/my_msckf/install" TYPE PROGRAM FILES "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zhouxin/Documents/my_msckf/install/env.sh")
+   "/home/zhouxin/Desktop/my_msckf/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zhouxin/Documents/my_msckf/install" TYPE PROGRAM FILES "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/home/zhouxin/Desktop/my_msckf/install" TYPE PROGRAM FILES "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/env.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zhouxin/Documents/my_msckf/install/setup.bash;/home/zhouxin/Documents/my_msckf/install/local_setup.bash")
+   "/home/zhouxin/Desktop/my_msckf/install/setup.bash;/home/zhouxin/Desktop/my_msckf/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zhouxin/Documents/my_msckf/install" TYPE FILE FILES
-    "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/setup.bash"
-    "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/local_setup.bash"
+file(INSTALL DESTINATION "/home/zhouxin/Desktop/my_msckf/install" TYPE FILE FILES
+    "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/setup.bash"
+    "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/local_setup.bash"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zhouxin/Documents/my_msckf/install/setup.sh;/home/zhouxin/Documents/my_msckf/install/local_setup.sh")
+   "/home/zhouxin/Desktop/my_msckf/install/setup.sh;/home/zhouxin/Desktop/my_msckf/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zhouxin/Documents/my_msckf/install" TYPE FILE FILES
-    "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/setup.sh"
-    "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/local_setup.sh"
+file(INSTALL DESTINATION "/home/zhouxin/Desktop/my_msckf/install" TYPE FILE FILES
+    "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/setup.sh"
+    "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/local_setup.sh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zhouxin/Documents/my_msckf/install/setup.zsh;/home/zhouxin/Documents/my_msckf/install/local_setup.zsh")
+   "/home/zhouxin/Desktop/my_msckf/install/setup.zsh;/home/zhouxin/Desktop/my_msckf/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zhouxin/Documents/my_msckf/install" TYPE FILE FILES
-    "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/setup.zsh"
-    "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/local_setup.zsh"
+file(INSTALL DESTINATION "/home/zhouxin/Desktop/my_msckf/install" TYPE FILE FILES
+    "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/setup.zsh"
+    "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/local_setup.zsh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/zhouxin/Documents/my_msckf/install/.rosinstall")
+   "/home/zhouxin/Desktop/my_msckf/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/zhouxin/Documents/my_msckf/install" TYPE FILE FILES "/home/zhouxin/Documents/my_msckf/build/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/home/zhouxin/Desktop/my_msckf/install" TYPE FILE FILES "/home/zhouxin/Desktop/my_msckf/build/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/zhouxin/Documents/my_msckf/build/gtest/cmake_install.cmake")
-  include("/home/zhouxin/Documents/my_msckf/build/msckf/cmake_install.cmake")
+  include("/home/zhouxin/Desktop/my_msckf/build/gtest/cmake_install.cmake")
+  include("/home/zhouxin/Desktop/my_msckf/build/my_msckf/image_node/cmake_install.cmake")
+  include("/home/zhouxin/Desktop/my_msckf/build/my_msckf/track_node/cmake_install.cmake")
 
 endif()
 
@@ -143,5 +144,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/zhouxin/Documents/my_msckf/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/zhouxin/Desktop/my_msckf/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
