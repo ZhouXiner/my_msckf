@@ -2,6 +2,7 @@
 // Created by zhouxin on 2019/12/23.
 //
 #include "track.h"
+#include <boost/math/distributions/chi_squared.hpp>
 
 using namespace Eigen;
 
@@ -17,33 +18,10 @@ Isometry3d IMUState::T_imu_body = Isometry3d::Identity();
 Isometry3d CAMState::T_cam0_cam1 = Isometry3d::Identity();
 FeatureIDType Feature::next_id = 0;
 double Feature::observation_noise = 0.01;
+map<int, double> MSCKF_VIO::chi_squared_test_table;
 
 MSCKF_VIO::MSCKF_VIO() {
 
-}
-Eigen::Isometry3d MSCKF_VIO::get_transfom(const vector<double> t_vec) {
-
-    Eigen::Matrix4d c;
-    c << t_vec[0],t_vec[1],t_vec[2],t_vec[3],
-            t_vec[4],t_vec[5],t_vec[6],t_vec[7],
-            t_vec[8],t_vec[9],t_vec[10],t_vec[11],
-            t_vec[12],t_vec[13],t_vec[14],t_vec[15];
-
-    Eigen::Isometry3d T;
-
-    T.linear()(0, 0)   = c(0, 0);
-    T.linear()(0, 1)   = c(0, 1);
-    T.linear()(0, 2)   = c(0, 2);
-    T.linear()(1, 0)   = c(1, 0);
-    T.linear()(1, 1)   = c(1, 1);
-    T.linear()(1, 2)   = c(1, 2);
-    T.linear()(2, 0)   = c(2, 0);
-    T.linear()(2, 1)   = c(2, 1);
-    T.linear()(2, 2)   = c(2, 2);
-    T.translation()(0) = c(0, 3);
-    T.translation()(1) = c(1, 3);
-    T.translation()(2) = c(2, 3);
-    return T;
 }
 
 bool MSCKF_VIO::load_parameters(ros::NodeHandle &nh){
@@ -182,17 +160,17 @@ void MSCKF_VIO::initializeGravityAndBias() {
         sum_angular_vel += angular_vel;
         sum_linear_acc += linear_acc;
     }
-    Imu_State.gyro_bias = sum_angular_vel / Imu_Msg_Buffer.size();
+    state_server.imu_state.gyro_bias = sum_angular_vel / Imu_Msg_Buffer.size();
 
     Vector3d gravity_imu = sum_linear_acc / Imu_Msg_Buffer.size();
 
     double gravity_norm = gravity_imu.norm();
 
-    Imu_State.gravity = Vector3d(0.0,0.0,gravity_norm);
+    IMUState::gravity = Vector3d(0.0,0.0,gravity_norm);
 
-    Quaterniond q0_i_w = Quaterniond::FromTwoVectors(gravity_imu,Imu_State.gravity);
+    Quaterniond q0_i_w = Quaterniond::FromTwoVectors(gravity_imu,IMUState::gravity);
 
-    Imu_State.orientation = rotationToQuaternion(q0_i_w.toRotationMatrix().transpose());
+    state_server.imu_state.orientation = rotationToQuaternion(q0_i_w.toRotationMatrix().transpose());
 
     return;
 }
@@ -208,4 +186,7 @@ void MSCKF_VIO::feature_track(const sensor_msgs::PointCloudConstPtr &feature_msg
     static double max_processing_time = 0.0;
     static int critical_time_cntr = 0;
     double processing_start_time = ros::Time::now().toSec();
+
+    ros::Time start_time = ros::Time::now();
+
 }

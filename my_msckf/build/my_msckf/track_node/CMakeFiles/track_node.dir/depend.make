@@ -6,6 +6,7 @@ my_msckf/track_node/CMakeFiles/track_node.dir/src/track.cpp.o: /home/zhouxin/Des
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track.cpp.o: /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/imu_status.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track.cpp.o: /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track.cpp
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track.cpp.o: /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track.h
+my_msckf/track_node/CMakeFiles/track_node.dir/src/track.cpp.o: /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/utils.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track.cpp.o: /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track.cpp.o: /opt/ros/melodic/include/eigen_conversions/eigen_msg.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h
@@ -383,6 +384,7 @@ my_msckf/track_node/CMakeFiles/track_node.dir/src/track_node.cpp.o: /home/zhouxi
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track_node.cpp.o: /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/imu_status.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track_node.cpp.o: /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track_node.cpp.o: /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track_node.cpp
+my_msckf/track_node/CMakeFiles/track_node.dir/src/track_node.cpp.o: /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/utils.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track_node.cpp.o: /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track_node.cpp.o: /opt/ros/melodic/include/eigen_conversions/eigen_msg.h
 my_msckf/track_node/CMakeFiles/track_node.dir/src/track_node.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h

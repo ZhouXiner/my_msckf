@@ -47,6 +47,8 @@ Eigen/Geometry
 /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track.cpp
 track.h
 /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track.h
+boost/math/distributions/chi_squared.hpp
+-
 
 /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track.h
 ros/ros.h
@@ -99,10 +101,14 @@ cam_status.h
 /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/cam_status.h
 features.h
 /home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/features.h
+utils.h
+/home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/utils.h
 
-/home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track_node.cpp
-track.h
-/home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/track.h
+/home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/src/utils.h
+cmath
+-
+Eigen/Dense
+-
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h

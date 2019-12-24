@@ -31,6 +31,7 @@
 #include "imu_status.h"
 #include "cam_status.h"
 #include "features.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -40,7 +41,6 @@ public:
     MSCKF_VIO();
 
     bool load_parameters(ros::NodeHandle &nh);
-    Eigen::Isometry3d get_transfom(const vector<double> t_vec);
     bool initilization(ros::NodeHandle &nh);
     void imu_track(const sensor_msgs::ImuConstPtr& msg);
     void initializeGravityAndBias();
