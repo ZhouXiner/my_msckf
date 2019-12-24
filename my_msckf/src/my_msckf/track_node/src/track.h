@@ -30,6 +30,7 @@
 
 #include "imu_status.h"
 #include "cam_status.h"
+#include "features.h"
 
 using namespace std;
 
@@ -38,7 +39,14 @@ class MSCKF_VIO{
 public:
     MSCKF_VIO();
 
-    vector<sensor_msgs::Imu> Imu_Msg_Buffer(0);
+    bool load_parameters(ros::NodeHandle &nh);
+    Eigen::Isometry3d get_transfom(const vector<double> t_vec);
+    bool initilization(ros::NodeHandle &nh);
+    void imu_track(const sensor_msgs::ImuConstPtr& msg);
+    void initializeGravityAndBias();
+    void feature_track(const sensor_msgs::PointCloudConstPtr &feature_msg);
+
+    vector<sensor_msgs::Imu> Imu_Msg_Buffer;
 
     struct StateServer{
         IMUState imu_state;
@@ -46,14 +54,40 @@ public:
         Eigen::MatrixXd state_cov;
         Eigen::Matrix<double,12,12> continuous_noise_cov;
     };
-
     StateServer state_server;
-    IMUState static_imu_state;
-    CAMState static_cam_state;
 
-    bool initialization();
+    // Chi squared test table.
+    static std::map<int, double> chi_squared_test_table;
 
-    void imu_track(const sensor_msgs::ImuConstPtr& msg);
+    bool is_gravity_set = 0;
+    bool is_first_img = 0;
+
+    // The position uncertainty threshold is used to determine
+    // when to reset the system online. Otherwise, the ever-
+    // increaseing uncertainty will make the estimation unstable.
+    // Note this online reset will be some dead-reckoning.
+    // Set this threshold to nonpositive to disable online reset.
+    double position_std_threshold = 8.0;
+
+    // Tracking rate
+    double tracking_rate;
+
+    // Threshold for determine keyframes
+    double translation_threshold = 0.4;
+    double rotation_threshold = 0.2618;
+    double tracking_rate_threshold = 0.5;
+
+    // Whether to publish tf or not.
+    bool publish_tf = true;
+
+    // Framte rate of the stereo images. This variable is
+    // only used to determine the timing threshold of
+    // each iteration of the filter.
+    double frame_rate = 20;
+
+    // Maximum number of camera states
+    int max_cam_state_size = 20;
+
 };
 
 #endif //SRC_TRACK_NODE_H

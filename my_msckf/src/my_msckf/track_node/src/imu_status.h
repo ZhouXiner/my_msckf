@@ -13,11 +13,10 @@
 #define GRAVITY_ACCELERATION 9.81
 
 struct IMUState{
-    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
     typedef long long int StateIDType;
 
     StateIDType id;
-    StateIDType  next_id;
+    static StateIDType next_id;
 
     double time;
 
@@ -46,10 +45,10 @@ struct IMUState{
     Eigen::Vector3d velocity_null;
 
     // Process noise
-    double gyro_noise;
-    double acc_noise;
-    double gyro_bias_noise;
-    double acc_bias_noise;
+    static double gyro_noise;
+    static double acc_noise;
+    static double gyro_bias_noise;
+    static double acc_bias_noise;
 
     // Gravity vector in the world frame
     static Eigen::Vector3d gravity;

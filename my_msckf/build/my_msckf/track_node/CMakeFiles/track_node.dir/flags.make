@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11 -O3 -Wall -g
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"track_node\"
 
-CXX_INCLUDES = -I/home/zhouxin/Desktop/my_msckf/src/my_msckf/track_node/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/opencv -I/usr/include/eigen3 -isystem /usr/local/include/opencv 
+CXX_INCLUDES = -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/opencv -I/usr/include/eigen3 -isystem /usr/local/include/opencv 
 

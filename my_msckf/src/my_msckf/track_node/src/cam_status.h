@@ -1,4 +1,4 @@
-//
+ //
 // Created by zhouxin on 2019/12/23.
 //
 
@@ -11,8 +11,6 @@
 #include "imu_status.h"
 
 struct  CAMState{
-    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-
     StateIDType id;
 
     double time;

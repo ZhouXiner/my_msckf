@@ -38,12 +38,7 @@ find_package(OpenCV REQUIRED)
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES msckf
-  CATKIN_DEPENDS cv_bridge geometry_msgs nav_msgs random_numbers roscpp rospy sensor_msgs std_msgs tf message_runtime
-  DEPENDS  Boost EIGEN3 OpenCV
-)
+catkin_package()
 
 ###########
 ## Build ##
@@ -52,7 +47,6 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include
   ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
   ${Boost_INCLUDE_DIR}

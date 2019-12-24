@@ -118,6 +118,13 @@
   <component name="ProjectId" id="1VLKnFGicA9W90NwZPfIzszh5qn" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/CLionProjects/B_Spline_surface" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -590,7 +597,9 @@
       <updated>1577027099698</updated>
       <workItem from="1577027100911" duration="1187000" />
       <workItem from="1577071480021" duration="3373000" />
-      <workItem from="1577078044913" duration="2882000" />
+      <workItem from="1577078044913" duration="3483000" />
+      <workItem from="1577158412762" duration="2844000" />
+      <workItem from="1577161700538" duration="27000" />
     </task>
     <servers />
   </component>
