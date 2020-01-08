@@ -1,5 +1,5 @@
 <launch>
-    <arg name="config_path" default = "/home/zhouxin/Desktop/my_msckf/src/my_msckf/config/euroc.yaml" />
+    <arg name="config_path" default = "/home/zhouxin/Projects/my_msckf/src/my_msckf/config/euroc.yaml" />
 
     
     <node name="image_node" pkg="image_node" type = "image_node" output="screen">

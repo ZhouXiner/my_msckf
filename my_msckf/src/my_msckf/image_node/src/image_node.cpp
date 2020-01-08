@@ -109,7 +109,6 @@ void publish(){
             life_time.values.push_back(feature_info.life_time);
             curr_cam0_points.push_back(feature_info.p0);
             curr_cam1_points.push_back(feature_info.p1);
-
         }
     }
     vector<cv::Point2f> curr_cam0_points_undistorted;
@@ -131,6 +130,7 @@ void publish(){
     feature_points->channels.push_back(u1);
     feature_points->channels.push_back(v1);
     feature_pub.publish(feature_points);
+    cout << "feature info time " << feature_points->header.stamp.toSec() << "  feature size " << curr_cam0_points_undistorted.size() << endl;
 }
 
 
@@ -262,7 +262,7 @@ void removeUnmarkedElements(
         ROS_WARN("The input size of raw_vec(%lu) and markers(%lu) does not match...",
                  raw_vec.size(), markers.size());
     }
-    for (int i = 0; i < markers.size(); ++i) {
+    for (size_t i = 0; i < markers.size(); ++i) {
         if (markers[i] == 0) continue;
         refined_vec.push_back(raw_vec[i]);
     }
@@ -384,9 +384,9 @@ void initialize_feature_track(){
     }
 
     int initialize_cnt = 0;
-    for(int id=0;id<Curr_Feature_Grid.size();id++){
+    for(size_t id=0;id<Curr_Feature_Grid.size();id++){
         vector<Feature_Grid> grid_features = Curr_Feature_Grid[id];
-        for(int size = 0;size < grid_points_min_size && size < grid_features.size();size++){
+        for(size_t size = 0;size < grid_points_min_size && size < grid_features.size();size++){
             Feature_Status feat;
             feat.feat_id = feature_id++;
             feat.life_time = 1;
@@ -497,11 +497,11 @@ void feature_track(){
 
     int after_matching = curr_cam1_matched_points.size();
 
-    for(int i=0;i<curr_cam0_matched_points.size();i++){
+    for(size_t i=0;i<curr_cam0_matched_points.size();i++){
         int row = int(curr_cam0_matched_points[i].y / grid_height);
         int col = int(curr_cam0_matched_points[i].x / grid_width);
         int code = row*grid_col + col;
-        if(Curr_Feature_Buffer[code].size() > grid_points_min_size){
+        if(int(Curr_Feature_Buffer[code].size()) > grid_points_min_size){
             continue;
         }
         Feature_Status feat;
@@ -511,7 +511,7 @@ void feature_track(){
         feat.p1 = curr_cam1_matched_points[i];
         Curr_Feature_Buffer[code].push_back(feat);
     }
-    cout << "before tracking : " << before_tracking << " tracking: " << after_tracking << " matching: " << after_matching;
+
     return;
 }
 
@@ -584,7 +584,7 @@ void add_new_feature(){
     }
 
     int new_add = 0;
-    for(int id=0;id<Curr_Feature_Grid.size();id++){
+    for(size_t id=0;id<Curr_Feature_Grid.size();id++){
         vector<Feature_Grid> grid_features = Curr_Feature_Grid[id];
         for(int size = 0;size < grid_points_max_size && size < grid_features.size();size++){
             if(Curr_Feature_Buffer[id].size() >= grid_points_max_size){
@@ -600,7 +600,6 @@ void add_new_feature(){
             new_add++;
         }
     }
-    cout << " new add: " << new_add << endl;
 }
 
 void stereo_callback(const sensor_msgs::ImageConstPtr& cam0_msg,

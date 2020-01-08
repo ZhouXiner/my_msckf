@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 2.8.12)
 project(image_node)
 
 set(CMAKE_BUILD_TYPE "Release")
@@ -28,7 +28,6 @@ find_package(OpenCV REQUIRED)
 ##################
 add_message_files(
         FILES
-
         FeatureMeasurement.msg
         CameraMeasurement.msg
 )
@@ -50,7 +49,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES msckf
+  LIBRARIES image_node
   CATKIN_DEPENDS cv_bridge geometry_msgs nav_msgs random_numbers roscpp rospy sensor_msgs std_msgs tf message_runtime
   DEPENDS  Boost EIGEN3 OpenCV
 )

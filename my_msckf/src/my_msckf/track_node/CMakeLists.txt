@@ -3,7 +3,10 @@ project(track_node)
 
 set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS "-std=c++11")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
+
+# Modify cmake module path if new .cmake files are required
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_LIST_DIR}/cmake")
+
 
 find_package(catkin REQUIRED COMPONENTS
         cv_bridge
@@ -12,6 +15,8 @@ find_package(catkin REQUIRED COMPONENTS
         random_numbers
         roscpp
         rospy
+        eigen_conversions
+        tf_conversions
         sensor_msgs
         std_msgs
         tf
@@ -19,9 +24,11 @@ find_package(catkin REQUIRED COMPONENTS
         message_generation
 )
 
+
 find_package(Boost REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(SuiteSparse REQUIRED)
 
 ##################
 ## ROS messages ##
@@ -38,7 +45,14 @@ find_package(OpenCV REQUIRED)
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package()
+catkin_package(
+        INCLUDE_DIRS include
+        LIBRARIES track_node
+        CATKIN_DEPENDS cv_bridge geometry_msgs nav_msgs random_numbers roscpp
+        eigen_conversions tf_conversions rospy sensor_msgs std_msgs tf message_filters message_runtime
+        DEPENDS Boost EIGEN3 OpenCV SUITESPARSE
+)
+
 
 ###########
 ## Build ##
@@ -51,10 +65,11 @@ include_directories(
   ${EIGEN3_INCLUDE_DIR}
   ${Boost_INCLUDE_DIR}
   ${OpenCV_INCLUDE_DIRS}
+  ${SUITESPARSE_INCLUDE_DIRS}
 )
 
 add_executable(track_node 
-               src/track_node.cpp
-               src/track.cpp)
-target_link_libraries(track_node ${catkin_LIBRARIES} ${OpenCV_LIBS} ${Boost_LIBRARIES})
+               src/track_node.cpp)
+
+target_link_libraries(track_node ${catkin_LIBRARIES} ${OpenCV_LIBS} ${Boost_LIBRARIES} ${SUITESPARSE_LIBRARIES})
 add_dependencies(track_node ${catkin_EXPORTED_TARGETS})
